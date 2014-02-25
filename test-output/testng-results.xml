@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="7" passed="7">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="4985" started-at="2014-02-25T20:27:42Z" finished-at="2014-02-25T20:27:47Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="4985" started-at="2014-02-25T20:27:42Z" finished-at="2014-02-25T20:27:47Z">
+      <class name="com.enablens.dfa.base.DcnmAuthTokenTest">
+        <test-method status="PASS" signature="getServer()[pri:0, instance:com.enablens.dfa.base.DcnmAuthTokenTest@538f1d7e]" name="getServer" duration-ms="533" started-at="2014-02-25T20:27:42Z" finished-at="2014-02-25T20:27:43Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getServer -->
+        <test-method status="PASS" signature="getToken()[pri:0, instance:com.enablens.dfa.base.DcnmAuthTokenTest@538f1d7e]" name="getToken" duration-ms="18" started-at="2014-02-25T20:27:43Z" finished-at="2014-02-25T20:27:43Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getToken -->
+        <test-method status="PASS" signature="netFailToken()[pri:0, instance:com.enablens.dfa.base.DcnmAuthTokenTest@538f1d7e]" name="netFailToken" duration-ms="2308" started-at="2014-02-25T20:27:43Z" finished-at="2014-02-25T20:27:45Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- netFailToken -->
+        <test-method status="PASS" signature="refreshState()[pri:0, instance:com.enablens.dfa.base.DcnmAuthTokenTest@538f1d7e]" name="refreshState" duration-ms="1058" started-at="2014-02-25T20:27:45Z" finished-at="2014-02-25T20:27:46Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- refreshState -->
+        <test-method status="PASS" signature="staleToken()[pri:0, instance:com.enablens.dfa.base.DcnmAuthTokenTest@538f1d7e]" name="staleToken" duration-ms="1010" started-at="2014-02-25T20:27:46Z" finished-at="2014-02-25T20:27:47Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- staleToken -->
+        <test-method status="PASS" signature="userAuthFailToken()[pri:0, instance:com.enablens.dfa.base.DcnmAuthTokenTest@538f1d7e]" name="userAuthFailToken" duration-ms="9" started-at="2014-02-25T20:27:47Z" finished-at="2014-02-25T20:27:47Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- userAuthFailToken -->
+        <test-method status="PASS" signature="validToken()[pri:0, instance:com.enablens.dfa.base.DcnmAuthTokenTest@538f1d7e]" name="validToken" duration-ms="22" started-at="2014-02-25T20:27:47Z" finished-at="2014-02-25T20:27:47Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validToken -->
+      </class> <!-- com.enablens.dfa.base.DcnmAuthTokenTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

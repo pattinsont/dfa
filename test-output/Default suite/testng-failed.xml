@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Default suite]">
+  <test name="Default test(failed)">
+    <classes>
+      <class name="com.enablens.dfa.base.DcnmAuthTokenTest">
+        <methods>
+          <include name="staleToken"/>
+          <include name="validToken"/>
+          <include name="userAuthFailToken"/>
+          <include name="getToken"/>
+          <include name="refreshState"/>
+        </methods>
+      </class> <!-- com.enablens.dfa.base.DcnmAuthTokenTest -->
+    </classes>
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->
