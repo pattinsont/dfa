@@ -20,9 +20,9 @@ import com.enablens.dfa.base.DcnmAuthToken.states;
 
 /**
  * Dcnm Authentication Token Test Class.
- * 
+ *
  * @author Terry Pattinson <terry@enablens.com>
- * @version 0.1
+ * @version %I%, %G%
  * @since 2014/02/01
  */
 public class DcnmAuthTokenTest {
@@ -47,8 +47,17 @@ public class DcnmAuthTokenTest {
     private DcnmAuthToken dt;
 
     /**
+     * Dcnm connector. Used to establish a connection and request a token
+     * using default values.
+     */
+    private void dcnmConnector() {
+        //Use default srv / usr / pass / life values
+        dcnmConnector(null, null, null, null);
+    }
+
+    /**
      * Dcnm connector. Used to establish a connection and request a token.
-     * 
+     *
      * @param serv
      *            DCNM Server. Uses class-level field definition if null.
      * @param user
@@ -58,7 +67,7 @@ public class DcnmAuthTokenTest {
      * @param life
      *            Lifetime of token. Uses class-level field definition if null.
      */
-    private final void dcnmConnector(final String serv, final String user,
+    private void dcnmConnector(final String serv, final String user,
             final String pass, final Long life) {
         String server;
         String username;
@@ -93,12 +102,8 @@ public class DcnmAuthTokenTest {
      * Stale token generator. Sleep for lifetime of token (by definition),
      * before returning to calling method.
      */
-    public void generateStaleToken() {
-        final String serv = null;
-        final String user = null;
-        final String pass = null;
-        final Long life = null;
-        dcnmConnector(serv, user, pass, life);
+    public final void generateStaleToken() {
+        dcnmConnector();
         try {
             Thread.sleep(LIFETIME);
         } catch (final InterruptedException e) {
@@ -111,22 +116,18 @@ public class DcnmAuthTokenTest {
      *
      */
     @Test
-    public void getServer() {
-        final String serv = null, user = null, pass = null;
-        final Long life = null;
-        dcnmConnector(serv, user, pass, life);
+    public final void getServer() {
+        dcnmConnector();
         assertEquals(dt.getServer(), SERVER);
     }
 
     /**
      * Ensures that length of returned token string is > 0.
-     * 
+     *
      */
     @Test
-    public void getToken() {
-        final String serv = null, user = null, pass = null;
-        final Long life = null;
-        dcnmConnector(serv, user, pass, life);
+    public final void getToken() {
+        dcnmConnector();
         assertEquals(dt.getState(), states.VALID);
         assertTrue(dt.getToken().length() > 0);
     }
@@ -135,11 +136,11 @@ public class DcnmAuthTokenTest {
      * Net fail token.
      */
     @Test
-    public void netFailToken() {
-        String serv = null;
-        final String user = null, pass = null;
+    public final void netFailToken() {
+        final String serv = "dcnm.test1";;
+        final String user = null;
+        final String pass = null;
         final Long life = null;
-        serv = "dcnm.test1";
         dcnmConnector(serv, user, pass, life);
         assertEquals(dt.getState(), states.NET_ERROR);
     }
@@ -148,7 +149,7 @@ public class DcnmAuthTokenTest {
      * Refresh state.
      */
     @Test
-    public void refreshState() {
+    public final void refreshState() {
         generateStaleToken();
         dt.getToken();
         assertEquals(dt.getState(), states.VALID);
@@ -167,12 +168,11 @@ public class DcnmAuthTokenTest {
      * User auth fail token.
      */
     @Test
-    public void userAuthFailToken() {
+    public final void userAuthFailToken() {
         final String serv = null;
-        String user = null;
+        final String user = "BIGBARRY";
         final String pass = null;
         final Long life = null;
-        user = "BIGBARRY";
         dcnmConnector(serv, user, pass, life);
         assertEquals(dt.getState(), states.SERVERSIDE_ERROR);
     }
@@ -182,10 +182,18 @@ public class DcnmAuthTokenTest {
      */
     @Test
     public final void validToken() {
-        final String serv = null, user = null, pass = null;
-        final Long life = null;
-        dcnmConnector(serv, user, pass, life);
+        dcnmConnector();
         assertEquals(dt.getState(), states.VALID);
+    }
+
+
+    /**
+     * toString.
+     */
+    @Test
+    public final void toStringTest() {
+        dcnmConnector();
+        System.out.println(dt);
     }
 
 }

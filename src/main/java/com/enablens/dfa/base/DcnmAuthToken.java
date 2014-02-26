@@ -10,6 +10,12 @@
  ******************************************************************************/
 package com.enablens.dfa.base;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -18,13 +24,22 @@ import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
 /**
- * DCNM Authentication Token Class.
- *
+ * The Class DcnmAuthToken.
+ * 
  * @author Terry Pattinson <terry@enablens.com>
  * @version 0.1
  * @since 2014/02/01
  */
 public class DcnmAuthToken {
+
+    /** Argument counter used in main(). */
+    private static final int ARGCOUNT = 4;
+
+    /**
+     * LOG logging constant.
+     */
+    @SuppressWarnings("unused")
+    private static final Log LOG = LogFactory.getLog(DcnmAuthToken.class);
 
     /** DCNM Token Key constant used in JSON parsing. */
     private static final String DCNM_TOKEN_KEY = "Dcnm-Token";
@@ -93,11 +108,15 @@ public class DcnmAuthToken {
 
     /**
      * Instantiates a new dcnm auth token.
-     *
-     * @param newServer the DCNM server.
-     * @param newUsername the DCNM username.
-     * @param newPassword the DCNM password for the provided username.
-     * @param newTokenLife the token life in msec.
+     * 
+     * @param newServer
+     *            the DCNM server.
+     * @param newUsername
+     *            the DCNM username.
+     * @param newPassword
+     *            the DCNM password for the provided username.
+     * @param newTokenLife
+     *            the token life in msec.
      */
     public DcnmAuthToken(final String newServer, final String newUsername,
             final String newPassword, final Long newTokenLife) {
@@ -149,7 +168,7 @@ public class DcnmAuthToken {
 
     /**
      * Gets the server.
-     *
+     * 
      * @return the server
      */
     public final String getServer() {
@@ -158,7 +177,7 @@ public class DcnmAuthToken {
 
     /**
      * Gets the state.
-     *
+     * 
      * @return the Authentication Token state
      */
     public final states getState() {
@@ -168,13 +187,14 @@ public class DcnmAuthToken {
 
     /**
      * Gets the token.
-     *
-     * @return the token value
+     * 
+     * @return the token
      */
     public final String getToken() {
         refreshState();
-        if (state != states.VALID)
+        if (state != states.VALID) {
             authenticate();
+        }
         return token;
     }
 
@@ -196,8 +216,9 @@ public class DcnmAuthToken {
 
     /**
      * Sets the password.
-     *
-     * @param newPassword the new password
+     * 
+     * @param newPassword
+     *            the new password
      */
     public final void setPassword(final String newPassword) {
         password = newPassword;
@@ -205,8 +226,9 @@ public class DcnmAuthToken {
 
     /**
      * Sets the server.
-     *
-     * @param newServer the new server
+     * 
+     * @param newServer
+     *            the new server
      */
     public final void setServer(final String newServer) {
         server = newServer;
@@ -214,8 +236,9 @@ public class DcnmAuthToken {
 
     /**
      * Sets the token life.
-     *
-     * @param newTokenLife the new token life
+     * 
+     * @param newTokenLife
+     *            the new token life
      */
     public final void setTokenLife(final Long newTokenLife) {
         tokenLife = newTokenLife;
@@ -223,8 +246,9 @@ public class DcnmAuthToken {
 
     /**
      * Sets the username.
-     *
-     * @param newUsername the new username
+     * 
+     * @param newUsername
+     *            the new username
      */
     public final void setUsername(final String newUsername) {
         username = newUsername;
@@ -232,111 +256,70 @@ public class DcnmAuthToken {
 
     /*
      * (non-Javadoc)
-     *
+     * 
      * @see java.lang.Object#hashCode()
      */
     @Override
     public final int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + (authTime == null ? 0 : authTime.hashCode());
-        result = prime * result + (password == null ? 0 : password.hashCode());
-        result = prime * result + (server == null ? 0 : server.hashCode());
-        result = prime * result
-                + (tokenLife == null ? 0 : tokenLife.hashCode());
-        result = prime * result + (username == null ? 0 : username.hashCode());
-        return result;
+        return HashCodeBuilder.reflectionHashCode(this);
     }
 
     /*
      * (non-Javadoc)
-     *
+     * 
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
     public final boolean equals(final Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (!(obj instanceof DcnmAuthToken)) {
-            return false;
-        }
-        final DcnmAuthToken other = (DcnmAuthToken) obj;
-        if (authTime == null) {
-            if (other.authTime != null) {
-                return false;
-            }
-        } else if (!authTime.equals(other.authTime)) {
-            return false;
-        }
-        if (password == null) {
-            if (other.password != null) {
-                return false;
-            }
-        } else if (!password.equals(other.password)) {
-            return false;
-        }
-        if (server == null) {
-            if (other.server != null) {
-                return false;
-            }
-        } else if (!server.equals(other.server)) {
-            return false;
-        }
-        if (tokenLife == null) {
-            if (other.tokenLife != null) {
-                return false;
-            }
-        } else if (!tokenLife.equals(other.tokenLife)) {
-            return false;
-        }
-        if (username == null) {
-            if (other.username != null) {
-                return false;
-            }
-        } else if (!username.equals(other.username)) {
-            return false;
-        }
-        return true;
+        return EqualsBuilder.reflectionEquals(this, obj);
     }
 
     /*
      * (non-Javadoc)
-     *
+     * 
      * @see java.lang.Object#toString()
      */
     @Override
     public final String toString() {
-        StringBuilder s = new StringBuilder();
-        if (getState() == states.VALID) {
-        s.append("DCNM Authentication Token = ");
-        s.append(getToken());
-        } else {
-            s.append("Token state is ");
-            s.append(getState());
-        }
-        return s.toString();
+        return ToStringBuilder.reflectionToString(this,
+                ToStringStyle.SHORT_PREFIX_STYLE);
     }
 
-    public static void main(String[] args) {
-        if (args.length == 4) {
-            String server = args[0];
-            String username = args[1];
-            String password = args[2];
+    /**
+     * The main method.
+     * 
+     * @param args
+     *            the arguments. <Server> <Username> <Password> <Lifetime>
+     * 
+     */
+    public static void main(final String[] args) {
+        StringBuilder sb = new StringBuilder();
+        if (args.length == ARGCOUNT) {
+            int i = 0;
+            String server = args[i++];
+            String username = args[i++];
+            String password = args[i++];
             Long lifetime = 0L;
             try {
-                lifetime = Long.parseLong(args[3]);
+                lifetime = Long.parseLong(args[i++]);
             } catch (NumberFormatException e) {
                 System.out.println("The last argument must be a number");
             }
-            DcnmAuthToken dt = new DcnmAuthToken(server, username, password, lifetime);
-            dt.getToken();
-            System.out.println(dt);
-        } else { System.out.println("Provide arguments in format of:\n" +
-                "Server Username Password Lifetime");
+            DcnmAuthToken dt = new DcnmAuthToken(server, username, password,
+                    lifetime);
+            final String token = dt.getToken();
+            if (dt.getState() == states.VALID) {
+                sb.append("DCNM Authentication Token = ");
+                sb.append(token);
+            } else {
+                sb.append("Token returned a state of ");
+                sb.append(dt.getState());
+            }
+        } else {
+            sb.append("Provide arguments in format of:\n");
+            sb.append("Server Username Password Lifetime");
         }
+
+        System.out.println(sb);
     }
 }
