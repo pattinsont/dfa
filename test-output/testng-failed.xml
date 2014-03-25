@@ -3,15 +3,22 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="com.enablens.dfa.base.DcnmAuthTokenTest">
+      <class name="com.enablens.dfa.base.UtilsTest">
         <methods>
-          <include name="staleToken"/>
-          <include name="validToken"/>
-          <include name="userAuthFailToken"/>
-          <include name="getToken"/>
-          <include name="refreshState"/>
+          <include name="postOperation"/>
+          <include name="listChildren"/>
+          <include name="getNodesFromJson"/>
+          <include name="main"/>
+          <include name="uriBuilder"/>
+          <include name="putOperation"/>
+          <include name="getType"/>
+          <include name="getNode"/>
+          <include name="getOperation"/>
+          <include name="beforeTest"/>
+          <include name="getNodeFromJson"/>
+          <include name="createNodes"/>
         </methods>
-      </class> <!-- com.enablens.dfa.base.DcnmAuthTokenTest -->
+      </class> <!-- com.enablens.dfa.base.UtilsTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

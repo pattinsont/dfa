@@ -27,7 +27,6 @@ import com.mashape.unirest.http.exceptions.UnirestException;
  * The Class DcnmAuthToken.
  * 
  * @author Terry Pattinson <terry@enablens.com>
- * @version 0.1
  * @since 2014/02/01
  */
 public class DcnmAuthToken {
@@ -57,7 +56,7 @@ public class DcnmAuthToken {
     private String server = "";
 
     /** State of the DCNM Authentication Token. */
-    private transient states state = states.UNINITIALISED;
+    private transient DcnmResponseStates state = DcnmResponseStates.UNINITIALISED;
 
     /** Authentication Token. */
     private transient String token = "";
@@ -67,44 +66,6 @@ public class DcnmAuthToken {
 
     /** DCNM username. */
     private String username = "";
-
-    /**
-     * Token state.
-     */
-    public enum states {
-
-        /**
-         * Internal Error - if the JSON response is unparseable.
-         */
-        INTERNAL_ERROR,
-
-        /**
-         * Network Error - if the RESTful library returns an error. Commmonly
-         * results from a DNS timeout (incorrectly specified FQDN).
-         */
-        NET_ERROR,
-
-        /**
-         * The server side error. HTTP response is valid but doesn't include
-         * JSON 2Dcnm-Token". For example, an authentication error results in
-         * this error code.
-         */
-        SERVERSIDE_ERROR,
-
-        /** The stale. */
-        STALE,
-
-        /** The uninitialised. */
-        UNINITIALISED,
-
-        /** The valid. */
-        VALID,
-
-        /**
-         * Webfailure - state if anything other than 200 is returned.
-         */
-        WEB_FAILURE
-    }
 
     /**
      * Instantiates a new dcnm auth token.
@@ -141,7 +102,7 @@ public class DcnmAuthToken {
             responseCode = response.getCode();
         } catch (final UnirestException e) {
             token = "";
-            state = states.NET_ERROR;
+            state = DcnmResponseStates.NET_ERROR;
             return;
         }
         responseCode = response.getCode();
@@ -151,17 +112,17 @@ public class DcnmAuthToken {
                     response.getBody().trim()).getAsJsonObject();
             if (jsonObject.has(DCNM_TOKEN_KEY)) {
                 token = jsonObject.get(DCNM_TOKEN_KEY).getAsString();
-                state = states.VALID;
+                state = DcnmResponseStates.VALID;
             } else {
                 // No token returned - DCNM returns {}
                 // if credentials are incorrect
                 token = "";
-                state = states.SERVERSIDE_ERROR;
+                state = DcnmResponseStates.SERVERSIDE_ERROR;
             }
         } else {
             // Not Response Code 200
             token = "";
-            state = states.WEB_FAILURE;
+            state = DcnmResponseStates.WEB_FAILURE;
         }
 
     }
@@ -180,7 +141,7 @@ public class DcnmAuthToken {
      * 
      * @return the Authentication Token state
      */
-    public final states getState() {
+    public final DcnmResponseStates getState() {
         refreshState();
         return state;
     }
@@ -192,7 +153,7 @@ public class DcnmAuthToken {
      */
     public final String getToken() {
         refreshState();
-        if (state != states.VALID) {
+        if (state != DcnmResponseStates.VALID) {
             authenticate();
         }
         return token;
@@ -202,14 +163,14 @@ public class DcnmAuthToken {
      * Refresh state.
      */
     private void refreshState() {
-        if (state.compareTo(states.STALE) > -1) {
+        if (state.compareTo(DcnmResponseStates.STALE) > -1) {
             if ("".equals(token)) {
-                state = states.UNINITIALISED;
+                state = DcnmResponseStates.UNINITIALISED;
             } else if (authTime + tokenLife < System.currentTimeMillis()) {
-                state = states.STALE;
+                state = DcnmResponseStates.STALE;
                 return;
             } else {
-                state = states.VALID;
+                state = DcnmResponseStates.VALID;
             }
         }
     }
@@ -304,11 +265,12 @@ public class DcnmAuthToken {
                 lifetime = Long.parseLong(args[i++]);
             } catch (NumberFormatException e) {
                 System.out.println("The last argument must be a number");
+                return;
             }
             DcnmAuthToken dt = new DcnmAuthToken(server, username, password,
                     lifetime);
             final String token = dt.getToken();
-            if (dt.getState() == states.VALID) {
+            if (dt.getState() == DcnmResponseStates.VALID) {
                 sb.append("DCNM Authentication Token = ");
                 sb.append(token);
             } else {

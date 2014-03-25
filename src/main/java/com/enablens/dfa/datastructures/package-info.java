@@ -12,5 +12,4 @@
  * @author Terry
  *
  */
-package com.enablens.dfa.base;
-
+package com.enablens.dfa.datastructures;

@@ -13,16 +13,15 @@ package com.enablens.dfa.base;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-import org.testng.annotations.Test;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 
-import com.enablens.dfa.base.DcnmAuthToken;
-import com.enablens.dfa.base.DcnmAuthToken.states;
+import org.testng.annotations.Test;
 
 /**
  * Dcnm Authentication Token Test Class.
- *
+ * 
  * @author Terry Pattinson <terry@enablens.com>
- * @version %I%, %G%
  * @since 2014/02/01
  */
 public class DcnmAuthTokenTest {
@@ -47,17 +46,22 @@ public class DcnmAuthTokenTest {
     private DcnmAuthToken dt;
 
     /**
-     * Dcnm connector. Used to establish a connection and request a token
-     * using default values.
+     * Dcnm connector. Used to establish a connection and request a token using
+     * default values.
      */
+
+    public static DcnmAuthToken getTestToken() {
+        return new DcnmAuthToken(SERVER, USERNAME, PASSWORD, LIFETIME);
+    }
+
     private void dcnmConnector() {
-        //Use default srv / usr / pass / life values
+        // Use default srv / usr / pass / life values
         dcnmConnector(null, null, null, null);
     }
 
     /**
      * Dcnm connector. Used to establish a connection and request a token.
-     *
+     * 
      * @param serv
      *            DCNM Server. Uses class-level field definition if null.
      * @param user
@@ -113,7 +117,7 @@ public class DcnmAuthTokenTest {
 
     /**
      * Gets the server.
-     *
+     * 
      */
     @Test
     public final void getServer() {
@@ -123,12 +127,12 @@ public class DcnmAuthTokenTest {
 
     /**
      * Ensures that length of returned token string is > 0.
-     *
+     * 
      */
     @Test
     public final void getToken() {
         dcnmConnector();
-        assertEquals(dt.getState(), states.VALID);
+        assertEquals(dt.getState(), DcnmResponseStates.VALID);
         assertTrue(dt.getToken().length() > 0);
     }
 
@@ -137,12 +141,13 @@ public class DcnmAuthTokenTest {
      */
     @Test
     public final void netFailToken() {
-        final String serv = "dcnm.test1";;
+        final String serv = "dcnm.test1";
+        ;
         final String user = null;
         final String pass = null;
         final Long life = null;
         dcnmConnector(serv, user, pass, life);
-        assertEquals(dt.getState(), states.NET_ERROR);
+        assertEquals(dt.getState(), DcnmResponseStates.NET_ERROR);
     }
 
     /**
@@ -152,7 +157,7 @@ public class DcnmAuthTokenTest {
     public final void refreshState() {
         generateStaleToken();
         dt.getToken();
-        assertEquals(dt.getState(), states.VALID);
+        assertEquals(dt.getState(), DcnmResponseStates.VALID);
     }
 
     /**
@@ -161,7 +166,7 @@ public class DcnmAuthTokenTest {
     @Test
     public final void staleToken() {
         generateStaleToken();
-        assertEquals(dt.getState(), states.STALE);
+        assertEquals(dt.getState(), DcnmResponseStates.STALE);
     }
 
     /**
@@ -174,7 +179,7 @@ public class DcnmAuthTokenTest {
         final String pass = null;
         final Long life = null;
         dcnmConnector(serv, user, pass, life);
-        assertEquals(dt.getState(), states.SERVERSIDE_ERROR);
+        assertEquals(dt.getState(), DcnmResponseStates.SERVERSIDE_ERROR);
     }
 
     /**
@@ -183,9 +188,8 @@ public class DcnmAuthTokenTest {
     @Test
     public final void validToken() {
         dcnmConnector();
-        assertEquals(dt.getState(), states.VALID);
+        assertEquals(dt.getState(), DcnmResponseStates.VALID);
     }
-
 
     /**
      * toString.
@@ -196,4 +200,43 @@ public class DcnmAuthTokenTest {
         System.out.println(dt);
     }
 
+    /**
+     * Main test - Successful Token generation.
+     */
+    @Test
+    public final void mainTestCorrect() {
+        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+        DcnmAuthToken.main(new String[]{SERVER, USERNAME, PASSWORD,
+                String.valueOf(LIFETIME)});
+        assertTrue(outContent.toString().startsWith(
+                "DCNM Authentication Token = "));
+    }
+
+    /**
+     * Main test - IncorrectrAgs
+     */
+    @Test
+    public final void mainTestIncorrectAgs() {
+        StringBuilder sb = new StringBuilder(128);
+        sb.append("Provide arguments in format of:\n");
+        sb.append("Server Username Password Lifetime");
+        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+        DcnmAuthToken.main(new String[]{SERVER, USERNAME, PASSWORD});
+        assert (outContent.toString().trim().equals(sb.toString()));
+    }
+
+    /**
+     * Main test - Nonumber
+     */
+    @Test
+    public final void mainTestNoNumber() {
+        StringBuilder sb = new StringBuilder(128);
+        sb.append("The last argument must be a number");
+        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+        DcnmAuthToken.main(new String[]{SERVER, USERNAME, PASSWORD, "ten"});
+        assert (outContent.toString().trim().equals(sb.toString()));
+    }
 }
