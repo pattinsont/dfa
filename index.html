@@ -1,40 +1,26 @@
-<!doctype html>
-<html lang="en">
-   <head>
-      <meta charset="utf-8">
-      <title>DFA Solutions</title>
-      <meta name="description" content="Enabling Cisco DFA">
-      <meta name="author" content="Terry Pattinson">
-      <meta name="apple-mobile-web-app-capable" content="yes" />
-      <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-      <link rel="stylesheet" href="css/reveal.min.css">
-      <link rel="stylesheet" href="css/theme/sky.css" id="theme">
-      <!-- For syntax highlighting -->
-      <link rel="stylesheet" href="lib/css/zenburn.css">
-      <!-- If the query includes 'print-pdf', include the PDF print sheet -->
-      <script>
-         if( window.location.search.match( /print-pdf/gi ) ) {
-         	var link = document.createElement( 'link' );
-         	link.rel = 'stylesheet';
-         	link.type = 'text/css';
-         	link.href = 'css/print/pdf.css';
-         	document.getElementsByTagName( 'head' )[0].appendChild( link );
-         }
-      </script>
-      <!--[if lt IE 9]>
-      <script src="lib/js/html5shiv.js"></script>
-      <![endif]-->
-      <style>
-         #navigation-bar {
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />	
+        <title>FullScreen Backgrounds - fullPage.js</title>
+        <meta name="author" content="Terry Pattinson" />
+        <meta name="description" content="Cisco DFA and supporting solutions" />
+        <meta name="keywords"  content="Cisco,Dynamic Fabric Automation,DFA" />
+        <meta name="Resource-type" content="Document" />
+
+        
+        <link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css" />
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+        <link rel="stylesheet" href="css/reveal.min.css">
+        <style>
+        /*
+        #navigation-bar {
          position: fixed;
          left: 0;
          top: 2px;
          width: 100%;
          height: 50px;
          z-index: 20;
-         border-top: 6px solid #df0d32
-         font-family: Helvetica, Arial, sans-serif;
          }
          #navigation-bar nav {
          padding: 15px 0;
@@ -43,9 +29,7 @@
          #navigation-bar a {
          display: inline-block;
          padding: 0 10px;
-         border-right: 2px solid #ccc;
          text-decoration: none;
-         color: #2A2A2A;
          }
          #navigation-bar a:last-child {
          border-right: none;
@@ -53,121 +37,159 @@
          #navigation-bar a:hover {
          text-decoration: underline;
          }
-      </style>
-   </head>
-   </head>
-   <body>   
-         <div id="navigation-bar">
-            <nav>
-               <a href="#" onclick="Reveal.slide(0, 1);">Introduction</a>
-               <a href="#" onclick="Reveal.slide(1, 0);">DFA Overview</a>
-               <a href="#" onclick="Reveal.slide(2, 0);">Solutions</a>
-               <a href="#" onclick="Reveal.slide(3, 0);">About Enable Network Services</a>
-            </nav>
-         </div>
-      <div class="background"></div>
-      <div class="slides">
-      </div>
-      <div class="reveal">
-         <div class="slides">
-            <section data-background-transition="slide">
-               <section data-autoslide="5000">
-                  <h2>Cisco's</h2>
-                  <h2>Dynamic Fabric</h2>
-                  <h2>Automation</h2>
-               </section>
-               <section>
-                  <h2>Introduction</h2>
-                  <p>Why do we need DFA</p>
-               </section>
-               <section>
-                  <h2>Network</h2>
-                  <ul>
-                        <li>Unlimited workload mobility - consolidate and split workload requirements across DC</li>
-                        <li>VM Mobility</li>
-                  </ul>
-               </section>
-               <section>
-                  <h2>Virtualise</h2>
-                  <ul>
-                        <li>Virtual connectivity defined by business requirements (internal addressing, services and security)</li>
-                        <li>Isolate segments</li>
-                  </ul>
-               </section>
-               <section>
-                  <h2>Fabric Management</h2>
-                  <ul>
-                        <li>Centralised configuration</li>
-                        <li>Visibility of network and higher abstractions</li>
-                  </ul>
-               </section>
-               <section>
-                  <h2>Automation</h2>
-                  <ul>
-                        <li>Automatic provisioning</li>
-                        <li>Operational (orchestration) or customer (portal) driven</li>
-               </section>
-               <section>
-               <a href="#/1/0">How does DFA solve this?</a>
-               </section>
-            </section>
-            <section data-background-transition="slide">
-               <section data-autoslide="5000">
-                  <h2>Enable Network Services</h2>
-               </section>
-               <section>
-                  <h2>Basement Level 1</h2>
-                  <p>Press down or up to navigate.</p>
-               </section>
-               <section>
-                  <h2>Basement Level 2</h2>
-                  <p>Cornify</p>
-                  <a class="test" href="http://cornify.com">
-                  <img width="280" height="326" src="https://s3.amazonaws.com/hakim-static/reveal-js/cornify.gif" alt="Unicorn">
-                  </a>
-               </section>
-               <section>
-                  <h2>Basement Level 3</h2>
-                  <p>That's it, time to go back up.</p>
-                  <a href="#/2" class="image">
-                  <img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(180deg);">
-                  </a>
-               </section>
-            </section>
-         </div>
-      </div>
-      <script src="lib/js/head.min.js"></script>
-      <script src="js/reveal.min.js"></script>
-      <script>
-         // Full list of configuration options available here:
-         // https://github.com/hakimel/reveal.js#configuration
-         Reveal.initialize({
-         	controls: true,
-         	progress: false,
-         	history: false,
-         	center: true,
-                      loop: true,
-                      // Enable slide navigation via mouse wheel
-                      mouseWheel: true,
+         */
          
-         	theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-         	transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
-         
-         	// Parallax scrolling
-         	// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
-         	// parallaxBackgroundSize: '2100px 900px',
-         
-         	// Optional libraries used to extend on reveal.js
-         	dependencies: [
-         		{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-         		{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-         		{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-         		{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-         		{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-         		{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-         	]
-         });
-         
-      </script>
-   </body>
+        /**
+        * Address `outline` inconsistency between Chrome and other browsers.
+        */
+
+        a:focus {
+            outline:0;
+        }
+
+        /**
+         * Improve readability when focused and also mouse hovered in all browsers.
+         */
+
+        a:active,
+        a:hover {
+            outline: 0;
+        }
+        
+        
+        /* Style for our header texts 
+        * --------------------------------------- */
+        h1{
+            font-size: 5em;	
+            font-family: arial,helvetica;
+            color: #fff;
+            margin:0;
+        }
+        p{
+            font-size: 2em;	
+            font-family: arial,helvetica;
+            color: #fff;
+            margin:0;
+        }
+        .intro p{
+            color: #fff;
+        }
+        
+        
+        /* Centered texts in each section 
+        * --------------------------------------- */
+        .section{
+            text-align:center;
+        }
+        
+            /* Fixed header and footer.
+        * --------------------------------------- */
+        #header, #footer{
+            position:fixed;
+            height: 60px;
+            display:block;
+            width: 100%;
+            background: #333;
+            z-index:9;
+            text-align:center;
+            color: #f2f2f2;
+            padding: 20px 0 0 0;
+        }
+        
+        /* Overwriting styles for control arrows for slides
+        * --------------------------------------- */
+        .controlArrow.prev {
+            left: 50px;
+        }
+        .controlArrow.next{
+            right: 50px;
+        }
+        </style>
+
+        <![endif]-->
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>	
+        <script type="text/javascript" src="vendors/jquery.slimscroll.min.js"></script>
+        <script type="text/javascript" src="js/jquery.fullPage.js"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $.fn.fullpage({
+                    anchors: ['Home', 'Requirements', 'Network', 'Virtualise', 'Fabric Management', 'Automation'],
+                    
+                    slidesColor: ['#C63D0F', '#1BBC9B', '#7E8F7C'],
+                    navigation: true,
+                    navigationPosition: 'right',
+                    navigationTooltips: ['Home', 'Requirements', 'Network', 'Virtualise', 'Fabric Management', 'Automation'],
+                    
+                    afterLoad: function(anchorLink, index){
+                        if(index == '1'){
+                            $(".nav.nav-tabs li").removeClass("active");
+                            $(".nav.nav-tabs li:eq(0)").addClass("active");
+                        }
+                        else {
+                            $(".nav.nav-tabs li").removeClass("active");
+                            $(".nav.nav-tabs li:eq(1)").addClass("active");
+                        }
+                    }
+                });
+            });
+        </script>
+
+    </head>
+    <body>
+    
+        <div id="navigation-bar">
+        <div id="header">
+            <ul class="nav nav-tabs nav-right">
+                <li class="active"><a href="index.html#Home">Home</a></li>
+                <li> <a href="index.html#Requirements">Modern DC Requirements</a>
+                <li> <a href="Introduction.html">DFA Overview</a>
+                <li> <a href="Solutions.html">Solutions</a>
+                <li> <a href="Enable.html">About Enable Network Services</a>
+            </ul>
+        </div>
+        </div>
+        
+        <div class="section" id="section0">
+            <div class="intro">
+                <h1>Cisco's</h1>
+                <h1>Dynamic Fabric Automation</h1>
+            </div>
+        </div>
+        
+        <div class="section" id="section0">
+            <div class="intro">
+                <h1>Requirements</h1>
+                <p>or</p>
+                <p>Why do we need DFA?</p>
+            </div>
+        </div>
+        
+        <div class="section" id="section1">
+                <div class="intro">
+                    <h1>Network Requirements</h1>
+                    <p>
+                        <ul>
+                            <li>Unlimited workload mobility - consolidate and split workload requirements across DC</li>
+                            <li>VM Mobility</li>
+                        </ul>
+                        Means we use
+                        <ul>
+                            <li>VLAN sprawl</li>
+                            <li>Layer 2 everywhere</li>
+                            <li>Large failure domains</li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+        
+        <div class="section" id="section2">
+            <div class="intro">
+                <h1>Enjoy it</h1>
+            </div>
+        </div>
+    </body>
 </html>
