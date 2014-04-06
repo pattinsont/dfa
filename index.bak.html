@@ -37,12 +37,7 @@
             /* Centered texts in each section 
             * --------------------------------------- */
             .section{
-                margin-left:auto;
-                margin-right:auto;
-                width:40%;
-                display: inline-block;
-                text-align: left;
-                margin: 0 0 0 1em;
+                text-align:center;
             }
 
             /* Fixed header and footer.
@@ -51,7 +46,7 @@
                 position:fixed;
                 height: 65px;
                 display:block;
-                width: 40%;
+                width: 100%;
                 background: #333;
                 z-index:9;
                 text-align:center;
@@ -70,7 +65,7 @@
 
             .intro.li{
                 text-align:left;
-                font-size: 15px;
+                font-size: 10px;
             }
 
             .intro ol,
@@ -80,6 +75,7 @@
                 width:40%;
                 display: inline-block;
                 text-align: left;
+                margin: 0 0 0 1em;
             }
 
             .intro ol {
@@ -121,8 +117,6 @@
                     navigation: true,
                     navigationPosition: 'right',
                     navigationTooltips: ['Home', 'Requirements', 'Network', 'Virtualise', 'Fabric Management', 'Automation'],
-                    css3: true,
-                    fixedElements: '#header',
 
                     afterLoad: function(anchorLink, index){
                         if(index == '1'){
@@ -135,10 +129,10 @@
                         }
                     }
                 });
+
             });
         </script>
     </head>
-
     <body>
 
 
@@ -153,7 +147,7 @@
                 </ul>
             </div>
         </div>
-
+        /
         <div class="section" id="section0">
             <h1>Cisco's</h1>
             <h1>Dynamic Fabric Automation</h1>
@@ -176,41 +170,46 @@
                         <li>Unlimited workload mobility - consolidate and split workload requirements across DC</li>
                         <li>VM Mobility</li>
                 </ul>
+            </p>
+            <p>
                 This means we use:
                 <ul>
                     <li>VLAN sprawl</li>
                     <li>Layer 2 everywhere</li>
                     <li>This results in large failure domains</li>
-                </ul>
-                Other network issues:
-                <ul>
-                    <li>Spanning-tree in the fabric</li>
-                    <li>VLAN scalability</li>
-                </ul>
-            </p>
+            </ul>
+        </p>
+        <p>
+            Other network issues:
+            <ul>
+                <li>Spanning-tree in the fabric</li>
+                <li>VLAN scalability</li>
+        </ul>
+    </p>
+</ul>
+</div>
+</div>
+
+<div class="section" id="Requirements - Virtualise">
+    <div class="intro">
+        <h1>Virtualisation Requirements</h1>
+        <ul>
+            <li>Virtual connectivity defined by business requirements (internal addressing, services and security)</li>
+            <li>Isolate segments</li>
+            <li>Virtual QoS</li>
         </div>
     </div>
 
-    <div class="section" id="section3">
+    <div class="section" id="Requirements - Management">
         <div class="intro">
-            <h1>Virtualisation Requirements</h1>
+            <h1>Management Requirements</h1>
             <ul>
-                <li>Virtual connectivity defined by business requirements (internal addressing, services and security)</li>
-                <li>Isolate segments</li>
-                <li>Virtual QoS</li>
-            </div>
+                <li>Automated provisioning</li>
+                <li>Network: pull</li>
+                <li>Operational / orchistration: push</li>
+                <li>Customer portal: API</li>
+            </ul>
         </div>
-
-        <div class="section" id="Requirements - Management">
-            <div class="intro">
-                <h1>Management Requirements</h1>
-                <ul>
-                    <li>Automated provisioning</li>
-                    <li>Network: pull</li>
-                    <li>Operational / orchistration: push</li>
-                    <li>Customer portal: API</li>
-                </ul>
-            </div>
-        </div>
-    </body>
+    </div>
+</body>
 </html>

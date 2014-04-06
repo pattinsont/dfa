@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Cisco DFA</title>
+	<meta name="author" content="Terry Pattinson" />
+	<meta name="description"
+		content="Cisco Dynamic Fabric Automation and supporting solutions" />
+	<meta name="keywords" content="Cisco,Dynamic Fabric Automation,DFA" />
+	
+	
+	<link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css" />
+	<link rel="stylesheet" type="text/css" href="css/examples.css" />
+	
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="css/main.css" />
+	
+	
+	<!--[if IE]>
+		<script type="text/javascript">
+		var console = { log: function() {} };
+		</script>
+		<![endif]-->
+	
+	<script
+		src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script
+		src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+	
+	<script type="text/javascript" src="js/jquery.slimscroll.min.js"></script>
+	
+	<script type="text/javascript" src="js/jquery.fullPage.js"></script>
+	<script type="text/javascript" src="examples.js"></script>
+	
+	<script type="text/javascript" src="bootstrap.js"></script>
+	
+	<script type="text/javascript">
+		$(document).ready(
+				function() {
+					$.fn.fullpage({
+						anchors : [ 'Home', 'Requirements', 'DFA', 'Solutions',
+								'Enable' ],
+						navigation : true,
+						navigationPosition : 'right',
+						navigationTooltips : [ 'Home', 'Requirements', 'DFA',
+								'Solutions', 'Enable' ],
+						css3 : true,
+						slidesNavigation : true,
+						slidesNavPosition : 'bottom',
+						loopHorizontal : false,
+						controlArrowColor : '#333',
+	
+						fixedElements : '#header, #footer',
+	
+						afterLoad : function(anchorLink, index) {
+							$(".nav.nav-tabs li").removeClass("active");
+							$(".nav.nav-tabs li:eq(0)").blur();
+							$(".nav.nav-tabs li:eq(1)").blur();
+							if (index == '1') {
+								$(".nav.nav-tabs li:eq(0)").addClass("active");
+							} else if (index == '2') {
+								$(".nav.nav-tabs li:eq(1)").addClass("active");
+							} else if (index == '3') {
+								$(".nav.nav-tabs li:eq(2)").addClass("active");
+							} else if (index == '4') {
+								$(".nav.nav-tabs li:eq(3)").addClass("active");
+							} else if (index == '5') {
+								$(".nav.nav-tabs li:eq(4)").addClass("active");
+							}
+						}
+					});
+				});
+	</script>
+	
+	</head>
+	<body>
+		<div id="header">
+			<div id="navigation-bar">
+				<ul class="nav nav-tabs nav-right">
+					<li class="active"><a href="#Home">Home</a></li>
+					<li><a href="#Requirements">Modern DC Requirements</a></li>
+					<li><a href="#DFA">DFA Overview</a></li>
+					<li><a href="#Solutions">Solutions</a></li>
+					<li><a href="#Enable">About Enable Network Services</a></li>
+				</ul>
+			</div>
+		</div>
+	
+		<div id="keytip">
+			<div class="keys">
+				<kbd>&#8592;</kbd>
+				<div class="topbottom">
+					<kbd>&uarr;</kbd>
+					<br>
+					<kbd>&darr;</kbd>
+				</div>
+				<kbd>&#8594;</kbd>
+			</div>
+			Use keyboard arrows for best experience.
+		</div>
+	
+		<div class="section">
+			<h1>Cisco's</h1>
+			<h1>Dynamic Fabric Automation</h1>
+		</div>
+	
+		<div class="section">
+			<div class="slide">
+				<h1>Requirements</h1>
+				<p style="font-size: 20px; padding-top: 18px; padding-left: 100px;">or</p>
+				<h1>Why do we need DFA?</h1>
+				<br><br>
+				<p>(
+				<kbd>&#8594;</kbd> for more detail, 
+					<kbd>&darr;</kbd> for next section.)
+			</div>
+	
+			<div class="slide">
+				<h1>Network Requirements</h1>
+				<ul>
+					<h3>We need:</h3>
+					<li>Unlimited workload mobility - consolidate and split
+						workload requirements across DC</li>
+					<li>VM Mobility</li>
+					<h3>This means we use:</h3>
+					<li>VLAN sprawl</li>
+					<li>Layer 2 everywhere</li>
+				</ul>
+				<h3 style="font: 20px; padding-left: 38px">Issues:</h3>
+				<ol>
+					<li>The above items result in large failure domains</li>
+					<li>Spanning-tree in the fabric</li>
+					<li>VLAN scalability</li>
+				</ol>
+			</div>
+	
+			<div class="slide">
+				<h1>Virtualisation Requirements</h1>
+				<ul>
+					<li>Virtual connectivity defined by business requirements
+						(internal addressing, services and security)</li>
+					<li>Isolate segments</li>
+					<li>Virtual QoS</li>
+			</div>
+	
+			<div class="slide">
+				<h1>Configuration Requirements</h1>
+				<ul>
+					<li>Automated provisioning</li>
+					<li>Network: pull</li>
+					<li>Operational / orchistration: push</li>
+					<li>Customer portal: API</li>
+				</ul>
+			</div>
+	
+	
+			<div class="slide">
+				<h1>Automation Requirements</h1>
+				<ul>
+					<li>Centralised configuration</li>
+					<li>Visibility of network and higher abstractions</li>
+					<li>Customer portal: API</li>
+				</ul>
+				<p style="left: 90%" class="menu"> <a href="#DFA">&darr;</a><!--90% is middle of 5th slide -->
+				</p>
+			</div>
+		</div>
+	
+	
+		<div class="section">
+			<div class="slide">
+				<h1>DFA</h1>
+				<p>Dynamic Fabric Automation delivers to all of these requirements</p>
+			</div>
+			
+			<div class="slide">
+				<h1>Network</h1>
+				<ul>
+					<li>Any subnet, anywhere, rapidly</li>
+					<li>Failure domain size reduced</li>
+					<li>Seamless L2 / L3 communication across fabric</li>
+					<li>Vast scale</li>
+					<li>Resilient</li>
+					<li>Topologically flexible</li>
+				</ul>
+			</div>
+
+			<div class="slide">
+				<h1>Virtual Fabrics</h1>
+				<ul>
+				<li>Any workload, any vFabric, anywhere</li>
+				<li>Scalable and secure</li>
+				<li>vFabric tenant visibility</li>
+				<li>Segmentation at L2/L3</li>
+				</ul>
+			</div>
+	
+			<div class="slide">
+				<h1>Configuration</h1>
+				<ul>
+				<li>Automated Network Provisioning</li>
+				<li>Common Point of Fabric Access</li>
+				<li>Network, vFabric and Host Visibility</li>
+				</ul>
+			</div>
+	
+			<div class="slide">
+				<h1>Workload automation</h1>
+				<ul>
+				<li>Open standard interfaces (REST, XMPP)</li>
+				</ul>
+			</div>
+			
+			<div class="slide">
+			<h1>Additional References</h1>
+				<p><a href="http://www.cisco.com/c/en/us/solutions/data-center-virtualization/unified-fabric/dynamic_fabric_automation.html">Cisco DFA Documentation</a></p>
+				<p><a href="http://www.cisco.com/c/en/us/td/docs/switches/datacenter/dfa/solution/guide/b-dfa-solution-.html">Cisco DFA Solution Guide</a></p>
+				<p><a href="https://www.ciscolive.com/online/connect/sessionDetail.ww?SESSION_ID=76319&backBtn=true">Ciscolive session</a></p>
+				
+				<p style="left: 91.67%" class="menu"> <a href="#DFA">&darr;</a><!--90% is middle of 5th slide -->
+				</p>
+			</div>
+		</div>
+		
+		<div class="section">
+			<h1>Enable Network Services provides</h1>
+			<ul>
+				<li>Proof of Concepts</li>
+				<li>Design and architecture</li>
+				<li>Training</li>
+				<li>Implementation support</li>
+				<li><a href="https://github.com/pattinsont/dfa/">Java SDK</a></li>
+				</ul>
+		</div>
+		
+		<div class="section">
+			<h1>About Enable Network Services</h1>
+			<a href="https://www.linkedin.com/in/pattinsont">Terry Pattinson</a> is the principle consultant of Enable Network Services.
+			<br>Contact him on +(0) 7951 381 613
+			<br>or
+			<a href="mailto:terry@enablens.com">terry@enablens.com</a>
+		</div>
+	</body>
+</html>

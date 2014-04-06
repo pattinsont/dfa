@@ -186,6 +186,8 @@ th {
 }
 @media print {
   * {
+      margin-left: 150;
+      align-content: flex-start;
     color: #000 !important;
     text-shadow: none !important;
     background: transparent !important;

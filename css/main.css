@@ -1,0 +1,162 @@
+/* Style for our header texts 
+	            * --------------------------------------- */
+h1 {
+	font-size: 36px;
+	font-family: arial, helvetica;
+	margin: 0;
+	padding: 0;
+}
+/**
+	            * Address `outline` inconsistency between Chrome and other browsers.
+	            */
+a:focus {
+	outline: 0;
+}
+
+/**
+	            * Improve readability when focused and also mouse hovered in all browsers.
+	
+	            */
+a:active,a:hover {
+	outline: 0;
+}
+
+.nav-tabs > li > a:focus {
+	color: #CCCCCC;
+	cursor: default;
+	background-color: none;
+	background: none;
+}
+
+
+
+
+@keyframes mymove {
+	0%   { padding-bottom: 50px; .opacity(0.8); }
+	50%  { padding-bottom: 75px; .opacity(0.35); }
+	100% { padding-bottom: 50px; .opacity(0.8); }
+}
+
+@-webkit-keyframes mymove {
+	0%   { padding-bottom: 50px; .opacity(0.8); }
+	50%  { padding-bottom: 75px; .opacity(0.35); }
+	100% { padding-bottom: 50px; .opacity(0.8); }
+}
+
+.section {
+	padding-left: 160px;
+	text-align: left;
+	font-size: 18px;
+	font-family: arial, helvetica;
+	background: #FFFFFC;
+}
+
+.menu { position: absolute;
+	left: 50%;
+	bottom: 50px;
+	margin-left: -107px;
+}
+
+.section .menu a {
+    animation: 1.75s ease-in-out 0s normal none infinite mymove;
+    background: url("../imgs/arrow-down.png") no-repeat scroll left top / 100% auto rgba(0, 0, 0, 0);
+    display: inline-block;
+    height: 33px;
+    text-indent: -9999em;
+    width: 58px;
+}
+
+
+#home {
+	background: #7E8F7C;
+}
+/* Fixed header and footer.
+	            * --------------------------------------- */
+#header {
+	position: fixed;
+	height: 63px;
+	display: block;
+	width: 100%;
+	background: #333;
+	z-index: 9;
+	text-align: center;
+	color: #f2f2f2;
+	padding: 20px 0 0 0;
+}
+
+#header {
+	top: 0px;
+}
+
+#keytip {
+	position: fixed;
+	bottom: 0;
+	right: 20px;
+	line-height: 50px;
+	font-size: 12px;
+	font-weight: 100; . opacity (0.3);
+	z-index: 5;
+	text-align: right;
+}
+
+#keytip .keys {
+	line-height: 1;
+	margin-right: 5px;
+	display: inline-block;
+}
+
+#keytip .topbottom {
+	display: inline-block;
+}
+
+.intro.li {
+	text-align: left;
+	font-size: 10px;
+}
+
+.intro ol,.intro ul {
+	margin-left: auto;
+	margin-right: auto;
+	width: 0.8;
+	text-align: left;
+	margin:;
+}
+
+.intro ol {
+	list-style-type: decimal;
+}
+
+.intro ul {
+	list-style-type: disc;
+}
+
+.intro ul ul {
+	list-style-type: square;
+}
+
+.intro ul ul ul {
+	list-style-type: circle;
+}
+
+.intro ul ul,.intro ul ol,.intro ol ol,.intro ol ul {
+	margin-left: 40px;
+}
+
+
+
+fieldset {
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+
+.fullPage-tooltip {
+	color: #222;
+}
+
+.controlArrow.prev {
+    left: 45px;
+}
+.controlArrow.next {
+    right: 45px;
+}
